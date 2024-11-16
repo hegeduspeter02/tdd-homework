@@ -1,3 +1,3 @@
-export function greeting(names: string[]): string {
-    return 'Hello';
+export function greetings(names: string[]): string {
+    return '';
 }

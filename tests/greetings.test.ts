@@ -45,5 +45,23 @@ describe('greetings', () => {
             expect(greetings(['Alice', 'BOB', 'Charlie', 'Peter', 'DANIEL'])).toBe('Hello Alice, Charlie and Peter. HELLO BOB AND DANIEL!');
         });
     });
+
+    describe('if multiple names are given in a single string', () => {
+        test('with a single string', () => {
+            expect(greetings(['Alice, Bob'])).toBe('Hello Alice and Bob.');
+        });
+
+        test('with multiple strings, but only normal greeting', () => {
+            expect(greetings(['Alice, Bob', 'Charlie'])).toBe('Hello Alice, Bob and Charlie.');
+        });
+
+        test('with multiple strings, but only shouting greeting', () => {
+            expect(greetings(['ALICE, BOB', 'CHARLIE'])).toBe('HELLO ALICE, BOB AND CHARLIE!');
+        });
+
+        test('with multiple strings, mixed greetings', () => {
+            expect(greetings(['Alice, Bob, DONALD', 'CHARLIE', 'Peter'])).toBe('Hello Alice, Bob and Peter. HELLO CHARLIE!');
+        });
+    });
     
 });

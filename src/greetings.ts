@@ -19,7 +19,7 @@ export function greetings(names: string[]): string {
     if(normalGreeting.length > 0 && shoutingGreeting.length > 0){
         return normalGreeting + ' ' + shoutingGreeting;
     }
-    else if(normalGreeting.length > 0 && shoutingGreeting.length === 0){
+    else if(normalGreeting.length > 0){
         return normalGreeting;
     }
     else {

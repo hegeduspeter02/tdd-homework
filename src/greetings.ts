@@ -3,6 +3,9 @@ export function greetings(names: string[]): string {
         return 'Hello, my friend';
     }
 
+    // Split names if they are given in a single string
+    names = names.flatMap(name => name.split(',').map(n => n.trim()));
+
     let normalGreeting: string = 'Hello ';
     let shoutingGreeting: string = 'HELLO ';
     

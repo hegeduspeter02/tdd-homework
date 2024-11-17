@@ -60,7 +60,7 @@ describe('greetings', () => {
         });
 
         test('with multiple strings, mixed greetings', () => {
-            expect(greetings(['Alice, Bob, DONALD', 'CHARLIE', 'Peter'])).toBe('Hello Alice, Bob and Peter. HELLO CHARLIE!');
+            expect(greetings(['Alice, Bob, DONALD', 'CHARLIE', 'Peter'])).toBe('Hello Alice, Bob and Peter. HELLO DONALD AND CHARLIE!');
         });
     });
     

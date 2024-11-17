@@ -24,6 +24,10 @@ describe('greetings', () => {
         test('with one name', () => {
             expect(greetings(['ALICE'])).toBe('HELLO ALICE!');
         });
+
+        test('with mixed inputs', () => {
+            expect(greetings(['Alice', 'BOB', 'Charlie', 'Peter', 'DANIEL'])).toBe('Hello Alice, Charlie and Peter. HELLO BOB AND DANIEL!');
+        });
     });
     
 });

@@ -9,7 +9,11 @@ describe('greetings', () => {
         expect(greetings(['Alice'])).toBe('Hello Alice.');
     });
 
+    test('with two names', () => {
+        expect(greetings(['Alice', 'Bob'])).toBe('Hello Alice and Bob.');
+    });
+
     test('with more than two names', () => {
-        expect(greetings(['Alice', 'Bob', 'Charlie'])).toBe('Hello Alice, Bob and Charlie.');
+        expect(greetings(['Alice', 'Bob', 'Charlie', 'Peter'])).toBe('Hello Alice, Bob, Charlie and Peter.');
     });
 });

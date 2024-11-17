@@ -3,16 +3,48 @@ export function greetings(names: string[]): string {
         return 'Hello, my friend';
     }
 
-    if (names.length === 1) {
-        if (names[0] === names[0].toUpperCase()) {
-            return `HELLO ${names[0]}!`;
+    let normalGreeting: string = 'Hello ';
+    let shoutingGreeting: string = 'HELLO ';
+    
+    names.forEach(name => {
+        if (name === name.toUpperCase()) {
+            shoutingGreeting += name + ', ';
+        } 
+        else {
+            normalGreeting += name + ', ';
         }
-        return `Hello ${names[0]}.`;
+    });
+
+    if(normalGreeting.indexOf(',') !== -1){
+        normalGreeting = normalGreeting.substring(0, normalGreeting.length - 2) + '.';
+    } 
+    else{
+        normalGreeting = '';
+    }
+    if(shoutingGreeting.indexOf(',') !== -1){
+        shoutingGreeting = shoutingGreeting.substring(0, shoutingGreeting.length - 2) + '!';
+    } 
+    else{
+        shoutingGreeting = '';
+    }
+    
+    const normalGreetingLastCommaIndex = normalGreeting.lastIndexOf(',');
+    if(normalGreetingLastCommaIndex !== -1){
+        normalGreeting = normalGreeting.substring(0, normalGreetingLastCommaIndex) + ' and' + normalGreeting.substring(normalGreetingLastCommaIndex + 1);
     }
 
-    let joinedNames: string = `Hello ${names.join(', ')}.`;
-    const lastCommaIndex = joinedNames.lastIndexOf(',');
-    joinedNames = joinedNames.substring(0, lastCommaIndex) + ' and' + joinedNames.substring(lastCommaIndex + 1);
+    const shoutingGreetingLastCommaIndex = shoutingGreeting.lastIndexOf(',');
+    if(shoutingGreetingLastCommaIndex !== -1){
+        shoutingGreeting = shoutingGreeting.substring(0, shoutingGreetingLastCommaIndex) + ' AND' + shoutingGreeting.substring(shoutingGreetingLastCommaIndex + 1);
+    }
 
-    return joinedNames;
+    if(normalGreeting.length > 0 && shoutingGreeting.length > 0){
+        return normalGreeting + ' ' + shoutingGreeting;
+    }
+    else if(normalGreeting.length > 0 && shoutingGreeting.length === 0){
+        return normalGreeting;
+    }
+    else {
+        return shoutingGreeting;
+    }
 }

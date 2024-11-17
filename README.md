@@ -7,4 +7,6 @@
 
 1.  Run the following command: 		`npm install`
 
-2.  Run tests with : 	`npm test` 
+2.  Run tests with: 	`npm test` 
+
+3.  Optionally, run the app with :   `npm start` 

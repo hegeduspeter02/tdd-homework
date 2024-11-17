@@ -3,5 +3,11 @@ export function greetings(names: string[]): string {
         return 'Hello, my friend';
     }
 
-    return `Hello ${names.join(', ')}.`;
+    let result: string = `Hello ${names.join(', ')}.`;
+    if(names.length > 1) {
+        const lastCommaIndex = result.lastIndexOf(',');
+        result = result.substring(0, lastCommaIndex) + ' and' + result.substring(lastCommaIndex + 1);
+    }
+
+    return result;
 }

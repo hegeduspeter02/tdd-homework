@@ -3,5 +3,5 @@ export function greetings(names: string[]): string {
         return 'Hello, my friend';
     }
 
-    return '';
+    return `Hello ${names.join(', ')}.`;
 }

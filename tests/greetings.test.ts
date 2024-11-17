@@ -8,4 +8,8 @@ describe('greetings', () => {
     test('with one name', () => {
         expect(greetings(['Alice'])).toBe('Hello Alice.');
     });
+
+    test('with more than two names', () => {
+        expect(greetings(['Alice', 'Bob', 'Charlie'])).toBe('Hello Alice, Bob and Charlie.');
+    });
 });

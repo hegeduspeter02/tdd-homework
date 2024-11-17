@@ -6,20 +6,15 @@ export function greetings(names: string[]): string {
     // Split names if they are given in a single string
     names = names.flatMap(name => name.split(',').map(n => n.trim()));
 
-    let normalGreeting: string = 'Hello ';
-    let shoutingGreeting: string = 'HELLO ';
+    const normalGreeting = convertToProperGreetingFormat(
+        names.filter(name => name !== name.toUpperCase()).join(', '),
+        false
+    );
     
-    names.forEach(name => {
-        if (name === name.toUpperCase()) {
-            shoutingGreeting += name + ', ';
-        }
-        else {
-            normalGreeting += name + ', ';
-        }
-    });
-
-    normalGreeting = convertToProperGreetingFormat(normalGreeting, false);
-    shoutingGreeting = convertToProperGreetingFormat(shoutingGreeting, true);
+    const shoutingGreeting = convertToProperGreetingFormat(
+        names.filter(name => name === name.toUpperCase()).join(', '),
+        true
+    );
 
     if(normalGreeting.length > 0 && shoutingGreeting.length > 0){
         return normalGreeting + ' ' + shoutingGreeting;
@@ -32,18 +27,17 @@ export function greetings(names: string[]): string {
     }
 }
 
-function convertToProperGreetingFormat(greeting: string, isShouting : boolean): string {
-    if(greeting.indexOf(',') !== -1){
-        greeting = greeting.substring(0, greeting.length - 2) + (isShouting ? '!' : '.');
+function convertToProperGreetingFormat(greetingNames: string, isShouting : boolean): string {
+    let greeting = ''
 
-        const greetingLastCommaIndex = greeting.lastIndexOf(',');
-        if(greetingLastCommaIndex !== -1){
-            greeting = greeting.substring(0, greetingLastCommaIndex) + (isShouting ? ' AND' : ' and') + greeting.substring(greetingLastCommaIndex + 1);
-        }
-    } 
-    else{
-        greeting = '';
+    if(greetingNames.length > 0){
+        greeting = (isShouting ? 'HELLO ' : 'Hello ') + greetingNames + (isShouting ? '!' : '.');
     }
 
+    const greetingLastCommaIndex = greeting.lastIndexOf(',');
+    if(greetingLastCommaIndex !== -1){
+        greeting = greeting.substring(0, greetingLastCommaIndex) + (isShouting ? ' AND' : ' and') + greeting.substring(greetingLastCommaIndex + 1);
+    } 
+    
     return greeting;
 }

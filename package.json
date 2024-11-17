@@ -1,8 +1,10 @@
 {
   "name": "tdd-homework",
   "version": "1.0.0",
+  "main": "index.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -11,7 +13,8 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@types/jest": "^29.5.14"
